@@ -49,9 +49,7 @@ namespace WorkTask
         //Свойство доступа к RD1
         public static bool Rd1 { get; private set; }
 
-        // Делегат
         
-
         // Конструктор класса
         public WorkStand()
         {
@@ -203,7 +201,7 @@ namespace WorkTask
         }
 
         // Алгоритм
-        public void AlgorythmStart()
+        public async void AlgorythmStart()
         {
 
             // Инструкции
@@ -222,9 +220,10 @@ namespace WorkTask
             //Thread.Sleep(0);
 
             // 2.4 шаг
-            while (!(GetPLC("PE2") <= 20))
+            SendPLC("NP1", "1");
+            if (GetPLC("PE2") <= 20)
             {
-                // Откачать камеру-колпак КК1
+                SendPLC("NP1", "0");
             }
             //Thread.Sleep(0);
 
@@ -264,13 +263,14 @@ namespace WorkTask
             // Открыть электромагнитный клапан VE10 или VE11 
             // (включение в работу одного из двух баллонов газовых Б1 (рабочий) и Б2 резервный))
             // Контроль давления в баллонах происходит с помощью преобразователя давления ВР3 (VE10 для Б1, VE11 для Б2, контрольное значение  <15).
-            while (!(GetPLC("BP3") < 15))
+
+            if (GetPLC("BP3") < 15)
             {
-                SendPLC(VeList[10] != null ? "VE10" : "VE11", "1");
+                SendPLC("VE10", "1");
             }
+            else
+                SendPLC("VE11", "1");
             //Thread.Sleep(0);
-
-
 
             // 2.12 шаг
             SendPLC("VE8", "1");
@@ -288,7 +288,7 @@ namespace WorkTask
 
             if (!(DateTime.Now == _dt))
             {
-                // Вывод значений GT
+                GetPLC("GT");
             }
             //Thread.Sleep(0);
 
@@ -323,9 +323,8 @@ namespace WorkTask
             //Thread.Sleep(0);
 
             // 2.21 шаг
-            // Противоречие условиям данным ранее PE от 0 до 99.0, тут требуется до 100
             SendPLC("VE5", "1");
-            if (Math.Abs(GetPLC("PE2") - 100) < 0.1)
+            if (GetPLC("PE2") == 90)
             {
                 SendPLC("VE5", "0");
             }
