@@ -1,0 +1,10 @@
+E:\Projects\C#\WorkTask\WorkTask\bin\Debug\WorkTask.exe.config
+E:\Projects\C#\WorkTask\WorkTask\bin\Debug\WorkTask.exe
+E:\Projects\C#\WorkTask\WorkTask\bin\Debug\WorkTask.pdb
+E:\Projects\C#\WorkTask\WorkTask\obj\Debug\WorkTask.csprojResolveAssemblyReference.cache
+E:\Projects\C#\WorkTask\WorkTask\obj\Debug\WorkTask.Form1.resources
+E:\Projects\C#\WorkTask\WorkTask\obj\Debug\WorkTask.Properties.Resources.resources
+E:\Projects\C#\WorkTask\WorkTask\obj\Debug\WorkTask.csproj.GenerateResource.Cache
+E:\Projects\C#\WorkTask\WorkTask\obj\Debug\WorkTask.csproj.CoreCompileInputs.cache
+E:\Projects\C#\WorkTask\WorkTask\obj\Debug\WorkTask.exe
+E:\Projects\C#\WorkTask\WorkTask\obj\Debug\WorkTask.pdb
